@@ -1,4 +1,4 @@
-package fr.exia.insanevehicles.element;
+package insanevehicles.element;
 
 /**
  * The Enum Permeability.

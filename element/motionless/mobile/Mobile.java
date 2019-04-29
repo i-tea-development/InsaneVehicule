@@ -1,8 +1,8 @@
-package fr.exia.insanevehicles.element.mobile;
+package insanevehicles.element.mobile;
 
-import fr.exia.insanevehicles.Road;
-import fr.exia.insanevehicles.element.Element;
-import fr.exia.insanevehicles.element.Permeability;
+import insanevehicles.Road;
+import insanevehicles.element.Element;
+import insanevehicles.element.Permeability;
 
 /**
  * The Class Mobile.

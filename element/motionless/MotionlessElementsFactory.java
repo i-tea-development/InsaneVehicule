@@ -1,4 +1,4 @@
-package fr.exia.insanevehicles.element.motionless;
+package insanevehicles.element.motionless;
 
 /**
  * <h1>A factory for creating MotionlessElements objects.</h1>
