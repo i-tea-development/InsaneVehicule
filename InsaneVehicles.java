@@ -24,3 +24,4 @@ public abstract class InsaneVehicles {
         insaneVehiclesGame.play();
     }
 }
+
