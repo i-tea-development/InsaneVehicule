@@ -3,7 +3,7 @@
  * There is a factory : MotionlessElementsFactory.
  *
  * @author Promo AI Cesi La Rochelle
- * @version 0.1
+ * @version 0.2
  */
 
 package insanevehicles.element.motionless;

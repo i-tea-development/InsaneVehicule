@@ -1,11 +1,14 @@
 package insanevehicles.element.motionless;
 
+import insanevehicles.element.Permeability;
+
 /**
  * The Class Obstacle.
  *
  * @author Promo AI Cesi La Rochelle
- * @version 0.1
+ * @version 0.2
  */
+
 class Obstacle extends MotionlessElement {
 
     /** The Constant SPRITE. */
@@ -15,6 +18,6 @@ class Obstacle extends MotionlessElement {
      * Instantiates a new obstacle.
      */
     Obstacle() {
-        super(SPRITE);
+        super(SPRITE, Permeability.BLOCKING);
     }
 }

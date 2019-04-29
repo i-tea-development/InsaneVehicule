@@ -1,5 +1,9 @@
 package insanevehicles;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Random;
 
 import insanevehicles.element.Element;
@@ -9,66 +13,58 @@ import insanevehicles.element.motionless.MotionlessElementsFactory;
  * The Class Road.
  *
  * @author Promo AI Cesi La Rochelle
- * @version 0.1
+ * @version 0.2
  */
 
 public class Road {
 
     /** The width. */
-    private int               width;
+    private int         width;
 
     /** The height. */
-    private int               height;
-
-    /** The view. */
-    private int               view;
+    private int         height;
 
     /** The quota. */
-    private int               quota;
+    private int         quota;
 
     /** The on the road. */
-    private final Element[][] onTheRoad;
+    private Element[][] onTheRoad;
 
     /**
-     * Instantiates a new road.
+     * Instantiates randomly a new road.
      *
      * @param width
      *            the width
      * @param height
      *            the height
-     * @param view
-     *            the view
      * @param quota
      *            the quota
      */
-    public Road(final int width, final int height, final int view, final int quota) {
+    public Road(final int width, final int height, final int quota) {
         this.setWidth(width);
         this.setHeight(height);
-        this.setView(view);
         this.setQuota(quota);
         this.onTheRoad = new Element[this.getWidth()][this.getHeight()];
         this.fillOnTheRoad();
     }
 
     /**
-     * Show.
+     * Instantiates a new road with the content of the file fileName.
      *
-     * @param yStart
-     *            the y start
+     * @param fileName
+     *            the file name where the map of the road is
+     * @param quota
+     *            the quota
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
-    public final void show(final int yStart) {
-        int y = yStart;
-        for (int view = 0; view < this.getView(); view++) {
-            y = (y + 1) % this.getHeight();
-            for (int x = 0; x < this.getWidth(); x++) {
-                System.out.print(this.getOnTheRoadXY(x, y).getSprite());
-            }
-            System.out.print("\n");
-        }
+    public Road(final String fileName, final int quota) throws IOException {
+        this.setQuota(quota);
+        this.loadFile(fileName);
     }
 
     /**
-     * Fill on the road.
+     * Fill randomly the road.
      */
     private void fillOnTheRoad() {
         final Random random = new Random();
@@ -84,6 +80,34 @@ public class Road {
                 }
             }
         }
+    }
+
+    /**
+     * Load file.
+     *
+     * @param fileName
+     *            the file name
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     */
+    private void loadFile(final String fileName) throws IOException {
+        final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+        String line;
+        int y = 0;
+        line = buffer.readLine();
+        this.setWidth(Integer.parseInt(line));
+        line = buffer.readLine();
+        this.setHeight(Integer.parseInt(line));
+        this.onTheRoad = new Element[this.getWidth()][this.getHeight()];
+        line = buffer.readLine();
+        while (line != null) {
+            for (int x = 0; x < line.toCharArray().length; x++) {
+                this.setOnTheRoadXY(MotionlessElementsFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
+            }
+            line = buffer.readLine();
+            y++;
+        }
+        buffer.close();
     }
 
     /**
@@ -122,25 +146,6 @@ public class Road {
      */
     private void setHeight(final int height) {
         this.height = height;
-    }
-
-    /**
-     * Gets the view.
-     *
-     * @return the view
-     */
-    public final int getView() {
-        return this.view;
-    }
-
-    /**
-     * Sets the view.
-     *
-     * @param view
-     *            the new view
-     */
-    private void setView(final int view) {
-        this.view = view;
     }
 
     /**

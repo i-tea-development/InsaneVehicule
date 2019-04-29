@@ -1,10 +1,12 @@
 package insanevehicles;
 
+import java.io.IOException;
+
 /**
  * The Class InsaneVehicles.
  *
  * @author Promo AI Cesi La Rochelle
- * @version 0.1
+ * @version 0.2
  */
 
 public abstract class InsaneVehicles {
@@ -14,8 +16,10 @@ public abstract class InsaneVehicles {
      *
      * @param args
      *            the arguments
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
-    public static void main(final String[] args) {
+    public static void main(final String[] args) throws IOException {
         final InsaneVehiclesGames insaneVehiclesGame = new InsaneVehiclesGames();
         insaneVehiclesGame.play();
     }

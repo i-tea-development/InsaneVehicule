@@ -4,7 +4,7 @@ package insanevehicles.element.motionless;
  * The Class Macadam.
  *
  * @author Promo AI Cesi La Rochelle
- * @version 0.1
+ * @version 0.2
  */
 
 class Macadam extends MotionlessElement {
@@ -16,6 +16,6 @@ class Macadam extends MotionlessElement {
      * Instantiates a new macadam.
      */
     Macadam() {
-        super(SPRITE);
+        super(SPRITE, Permeability.PENETRABLE);
     }
 }

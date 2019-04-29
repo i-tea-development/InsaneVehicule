@@ -3,21 +3,21 @@ package insanevehicles.element.motionless;
 import insanevehicles.element.Permeability;
 
 /**
- * The Class Ditch.
+ * The Class DitchLeft.
  *
  * @author Promo AI Cesi La Rochelle
  * @version 0.2
  */
 
-class Ditch extends MotionlessElement {
+class DitchLeft extends MotionlessElement {
 
     /** The Constant SPRITE. */
-    private static final char SPRITE = '|';
+    private static final char SPRITE = '/';
 
     /**
-     * Instantiates a new ditch.
+     * Instantiates a new ditchLeft.
      */
-    Ditch() {
+    DitchLeft() {
         super(SPRITE, Permeability.BLOCKING);
     }
 }
